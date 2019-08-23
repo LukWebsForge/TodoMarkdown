@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>de.lukweb.todo-markdown</id>
+    <name>TodoMarkdown</name>
+    <vendor email="info@lukweb.de" url="https://github.com/LukWebsForge/TodoMarkdown">LukWeb</vendor>
+
+    <description><![CDATA[
+        TodoMarkdown writes your project TODOs to a Markdown file.
+
+        You can find it under Tools -> TODOs to Markdown (A Markdown file must be selected).
+    ]]></description>
+
+    <!-- Full list of IntelliJ IDEA releases: https://www.jetbrains.com/intellij-repository/releases -->
+    <!-- <idea-version since-build="183.4284.148"/> -->
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>org.intellij.plugins.markdown</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <projectConfigurable groupId="tools" instance="de.lukweb.tomd.TomdSettingsPage"/>
+        <applicationService serviceImplementation="de.lukweb.tomd.TomdSettings"/>
+    </extensions>
+
+    <actions>
+        <action id="TodoMardown.Write" class="de.lukweb.tomd.TomdMenu" text="TODOs to Markdown"
+                description="Write your project TODOs to a Markdown file">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
