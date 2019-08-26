@@ -1,9 +1,11 @@
 package de.lukweb.tomd;
 
+import com.intellij.lang.Language;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.EditorTextField;
+import org.intellij.plugins.markdown.lang.MarkdownLanguage;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,11 +34,11 @@ public class TomdSettingsPage implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        /* MarkdownLanguage mdLang = Language.findInstance(MarkdownLanguage.class);
+        MarkdownLanguage mdLang = Language.findInstance(MarkdownLanguage.class);
         if (mdLang.getAssociatedFileType() != null) {
             textFilename.setFileType(mdLang.getAssociatedFileType());
             textTodoEntry.setFileType(mdLang.getAssociatedFileType());
-        }*/
+        }
 
         textFilename.setOneLineMode(true);
         textTodoEntry.setOneLineMode(true);
