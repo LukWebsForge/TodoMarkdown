@@ -67,9 +67,9 @@ public class TomdWriter {
         this.project = project;
     }
 
-    public void createUpdateSingle(Editor editor, PsiFile file) {
+    public boolean createUpdateSingle(Editor editor, PsiFile file) {
         String markdown = buildMarkdown(file);
-        updateOrInsertInEditor(markdown, editor);
+        return updateOrInsertInEditor(markdown, editor);
     }
 
     public int updateAll() {
@@ -149,7 +149,7 @@ public class TomdWriter {
         return writer.toString();
     }
 
-    private void updateOrInsertInEditor(String markdown, Editor editor) {
+    private boolean updateOrInsertInEditor(String markdown, Editor editor) {
         Document document = editor.getDocument();
         CaretModel caretModel = editor.getCaretModel();
 
@@ -167,6 +167,8 @@ public class TomdWriter {
 
             caretModel.moveToOffset(offset + mdWithComments.length());
         }
+
+        return updated;
     }
 
     private boolean updateInDocument(String markdown, Document document) {

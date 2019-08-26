@@ -52,7 +52,9 @@ public class TomdMenu extends AnAction {
         TomdWriter writer = new TomdWriter(settings, project);
 
         if (editor != null && virtualFile != null && TomdWriter.isMarkdownExtension(virtualFile.getExtension())) {
-            writer.createUpdateSingle(editor, psiFile);
+            if (writer.createUpdateSingle(editor, psiFile)) {
+                showNotification("Updated the TODO List in this file", NotificationType.INFORMATION);
+            }
         } else {
             new Task.Backgroundable(project, "Updating TODO in Markdown Files...") {
                 @Override
