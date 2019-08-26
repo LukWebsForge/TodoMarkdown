@@ -106,7 +106,7 @@ public class TomdWriter {
             }
         });
 
-        files.sort(Comparator.comparing(file -> relativePath(psiFile.getVirtualFile(), file.getVirtualFile())));
+        files.sort(Comparator.comparing(file -> file.getVirtualFile().getPath()));
 
         StringWriter writer = new StringWriter();
         for (int i = 0; i < files.size(); i++) {
