@@ -7,7 +7,7 @@ public class TomdSettingsState {
 
     public TomdSettingsState() {
         filenameTemplate = "**[$name](./$path)**:";
-        todoEntryTemplate = "* $text / $pattern";
+        todoEntryTemplate = "* $text";
     }
 
     public String getFilenameTemplate() {
