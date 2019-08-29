@@ -156,9 +156,9 @@ public class TomdWriter {
         boolean updated = updateInDocument(markdown, document);
         if (!updated) {
             // Insert
-            String mdWithComments = "<!-- " + COMMENT_START + " / Don't change this line" + "-->\n" +
+            String mdWithComments = "<!-- " + COMMENT_START + " / Don't change this line" + "-->\n\n" +
                     markdown +
-                    "<!-- " + COMMENT_END + " -->";
+                    "\n<!-- " + COMMENT_END + " -->";
 
             int offset = caretModel.getPrimaryCaret().getOffset();
             WriteCommandAction.runWriteCommandAction(project, () -> {
@@ -185,7 +185,7 @@ public class TomdWriter {
             int endOffset = document.getLineStartOffset(endLine);
 
             WriteCommandAction.runWriteCommandAction(project, () -> {
-                document.replaceString(startOffset, endOffset, "\n" + markdown);
+                document.replaceString(startOffset, endOffset, "\n\n" + markdown + "\n");
             });
 
             return true;
